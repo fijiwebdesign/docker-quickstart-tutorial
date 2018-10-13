@@ -4,6 +4,17 @@
 
 Docker quickstart on how to run a container with python and redis using `Dockerfile`, create an image and share it to docker repo, generate local vms to run the app load-balanced using `docker-compose.yml`, create a distributed swarm of remote machines to run the app load-balanced.
 
+## Install
+
+Clone this repo and follow along. 
+
+```
+git clone git@github.com:fijiwebdesign/docker-quickstart-tutorial.git
+cd docker-quickstart-tutorial
+
+```
+
+
 ## Docker commands cheatsheet 
 
 ```
@@ -239,6 +250,24 @@ myvm1   *        virtualbox   Running   tcp://192.168.99.100:2376           v18.
 myvm2   -        virtualbox   Running   tcp://192.168.99.101:2376           v18.06.1-ce
 ```
 
+### Deploy the app on the swarm manager
+
 ```
 docker stack deploy -c docker-compose.yml getstartedlab
+```
+
+Ouput
+
+```
+Creating network getstartedlab_webnet
+Creating service getstartedlab_web
+```
+
+**Congrats! The app is deployed on a swarm cluster!**
+
+
+Verify services have been redeployed
+
+```
+docker service ps getstartedlab_web
 ```
